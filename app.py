@@ -103,7 +103,7 @@ if st.button("🔍 Cek Bantuan yang Mungkin Saya Dapat", type="primary"):
     if not model_loaded:
         st.error("Model AI tidak tersedia. Periksa kembali folder model/.")
     else:
-        # Mapping jawaban teks ke angka (harus sama dengan saat training)
+        # Map the text responses to numbers (they must match the training data)
         income_map = {
             "< Rp500.000": 0,
             "Rp500.000 – Rp1.000.000": 1,
@@ -118,7 +118,7 @@ if st.button("🔍 Cek Bantuan yang Mungkin Saya Dapat", type="primary"):
             "Bambu/lainnya": 3
         }
 
-        # Buat array 7 fitur
+        # Create an array of 7 features
         features = np.array([
             income_map[pendapatan],
             anggota_map[jumlah_anggota],
@@ -129,10 +129,10 @@ if st.button("🔍 Cek Bantuan yang Mungkin Saya Dapat", type="primary"):
             dinding_map[dinding_rumah]
         ]).reshape(1, -1)
 
-        # Prediksi probabilitas multi‑label
+        # Multi-label probability prediction
         proba = model.predict_proba(features)
 
-        # Kumpulkan program dengan probabilitas ≥ 0.5
+        # Collect programs with a probability of ≥ 0.5
         program_list = []
         confidences = {}
         program_names = list(encoder.classes_)  # ['BPNT','PBI_JKN','PIP','PKH'] (alphabetical)
@@ -140,15 +140,15 @@ if st.button("🔍 Cek Bantuan yang Mungkin Saya Dapat", type="primary"):
         for i, prog in enumerate(program_names):
             if proba[i][0][1] >= 0.5:
                 program_list.append(prog)
-                # Batasi confidence maksimum 95% agar tidak terlihat terlalu pasti
+                # Limit the confidence level to 95% so it doesn’t seem too definitive
                 raw_conf = proba[i][0][1]
                 confidences[prog] = min(raw_conf, 0.95)
 
-        # Urutkan program supaya tampil lebih natural: PKH, BPNT, PIP, PBI_JKN
+        # Arrange the program so that it looks more natural: PKH, BPNT, PIP, PBI_JKN
         urutan = ["PKH", "BPNT", "PIP", "PBI_JKN"]
         program_list = [p for p in urutan if p in program_list]
 
-        # ---------- TAMPILKAN HASIL ----------
+        # ---------- SHOW RESULTS ----------
         st.markdown("---")
         st.subheader("📋 Hasil Pemeriksaan")
 
@@ -168,7 +168,7 @@ if st.button("🔍 Cek Bantuan yang Mungkin Saya Dapat", type="primary"):
                 conf = confidences[prog]
 
                 with st.expander(f"✅ {info['nama']} – Tingkat kecocokan: {conf:.0%}"):
-                    # Penjelasan spesifik per program
+                    # Program-specific details
                     st.markdown(f"**Mengapa?** {info['alasan']}")
                     st.markdown(f"**Deskripsi:** {info['deskripsi']}")
                     st.markdown("**Dokumen yang harus disiapkan:**")
@@ -188,5 +188,5 @@ if st.button("🔍 Cek Bantuan yang Mungkin Saya Dapat", type="primary"):
             "Ini adalah alat bantu, bukan penentu akhir."
         )
 
-        # ---------- TIPS CETAK ----------
+        # ---------- PRINTING TIPS ----------
         st.info("💡 Tips: Anda bisa mencetak halaman ini (Ctrl+P) untuk dibawa ke kelurahan sebagai panduan awal.")
