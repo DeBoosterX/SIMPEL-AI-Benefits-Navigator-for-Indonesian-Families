@@ -190,3 +190,7 @@ if st.button("🔍 Cek Bantuan yang Mungkin Saya Dapat", type="primary"):
 
         # ---------- PRINTING TIPS ----------
         st.info("💡 Tips: Anda bisa mencetak halaman ini (Ctrl+P) untuk dibawa ke kelurahan sebagai panduan awal.")
+
+        # ---------- RESET BUTTON ----------
+        if st.button("🔄 Mulai Ulang"):
+            st.rerun()
