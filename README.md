@@ -15,7 +15,7 @@
 | Resource | Link |
 |----------|------|
 | **🟢 Live Web App** | [Streamlit Cloud](https://simpel.streamlit.app/) |
-| **📓 Jupyter Notebook** | [eligibility_classifier_v3.ipynb](jupyter/eligibility_classifier_v3.ipynb) |
+| **📓 Jupyter Notebook** | [eligibility_classifier.ipynb](jupyter/eligibility_classifier.ipynb) |
 | **🎨 Figma Prototype** | [View on Figma]([ISI_LINK_FIGMA]) |
 | **📹 Video Walkthrough** | [YouTube (unlisted)]([ISI_LINK_YOUTUBE]) |
 | **📸 Documentation & Screenshots** | [docs/README.md](docs/README.md) |
