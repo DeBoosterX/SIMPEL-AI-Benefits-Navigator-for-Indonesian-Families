@@ -25,6 +25,7 @@ This folder contains the **visual documentation** of the SIMPEL application for 
 ---
 
 ## 📁 Folder Contents
+```
 docs/
 ├── README.md ← You are here
 └── screenshots/
@@ -32,6 +33,7 @@ docs/
 ├── 2_results.png
 ├── 3_disclaimer.png
 └── 4_print.png
+```
 
 ---
 
