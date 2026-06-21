@@ -20,7 +20,7 @@
 |----------|------|
 | **🟢 Live Web App** | [Streamlit Cloud](https://simpel.streamlit.app/) |
 | **📓 Jupyter Notebook** | [eligibility_classifier.ipynb](jupyter/eligibility_classifier.ipynb) |
-| **🎨 Figma Prototype** | [View on Figma]([ISI_LINK_FIGMA]) |
+| **🎨 Figma Prototype** | [View on Figma](https://seven-five-38917158.figma.site) |
 | **📹 Video Walkthrough** | [YouTube (unlisted)]([ISI_LINK_YOUTUBE]) |
 | **📸 Documentation & Screenshots** | [docs/README.md](docs/README.md) |
 
@@ -40,7 +40,9 @@ SIMPEL screens for four national social assistance programs:
 ---
 
 ## ❓ Problem
-Millions of low‑income Indonesian families miss out on cash transfers, food assistance, school aid, and free healthcare because eligibility rules are fragmented across different government websites, written in bureaucratic language, and difficult to interpret under stress. Families who are eligible do not apply simply because they do not know where to start.
+Over eight million of low‑income Indonesian families miss out on cash transfers, food assistance, school aid, and free healthcare every year — not because they are ineligible, but because eligibility rules are fragmented across different government websites, written in bureaucratic language, and impossible to interpret under stress. Families who qualify do not apply simply because they do not know where to start.
+
+*Sources: World Bank (2023) — Indonesia Social Assistance Review; TNP2K (2022) — coverage gap analysis.*
 
 ---
 
@@ -84,10 +86,10 @@ SIMPEL asks **7 plain‑language questions** (in Bahasa Indonesia), then uses a 
 
 ## 📊 Data
 All data is **100% synthetic** (4,273 households), generated programmatically based on simplified official eligibility rules from:
-- [Kemensos – PKH](https://kemensos.go.id/program-keluarga-harapan-pkh)
-- [Kemensos – BPNT](https://kemensos.go.id/bantuan-pangan-non-tunai-bpnt)
-- [Kemendikbud – PIP](https://pip.kemdikbud.go.id/)
-- [BPJS Kesehatan – PBI](https://bpjs-kesehatan.go.id/bpjs/index.php/pages/detail/2014/11)
+- [Kemensos – PKH](https://www.kemensos.go.id/program-keluarga-harapan-pkh)
+- [Kemensos – BPNT](https://www.kemensos.go.id/bantuan-pangan-non-tunai-bpnt)
+- [Kemendikbud – PIP](https://pip.kemendikdasmen.go.id/home_v1)
+- [BPJS Kesehatan – PBI](https://www.bpjs-kesehatan.go.id/#/)
 
 To improve fairness and avoid over‑prediction, we added 5% label noise and included 1,500 negative samples (clearly ineligible households).
 
