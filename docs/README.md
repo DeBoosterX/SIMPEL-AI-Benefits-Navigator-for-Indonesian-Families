@@ -51,8 +51,6 @@ This folder contains the **visual documentation** of the SIMPEL application for 
 
 ![SIMPEL Logo](screenshots/logo.png)
 
-**Logo file:** `docs/screenshots/logo.png`
-
 The SIMPEL logo combines a compass‑like mark with the project name. It is used in the app header, the README, and the pitch deck. The design emphasizes navigation, simplicity, and forward direction — reflecting the mission to guide families through a confusing benefits system.
 
 ---
