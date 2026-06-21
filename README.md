@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/logo.png" alt="SIMPEL Logo" width="200"/>
+  <img src="screenshots/logo.png" alt="SIMPEL Logo" width="200"/>
 </p>
 
 # SIMPEL – AI Benefits Navigator for Indonesian Families
