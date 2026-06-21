@@ -57,8 +57,9 @@ The SIMPEL logo combines a compass‑like mark with the project name. It is used
 
 ## 📊 Pitch Deck Presentation
 
-**File:** [Pitch Deck (PDF)](https://docs.google.com/presentation/d/14Uo2NjJu1JA7-NlhcA9yM1STi1OoK5PhIQ_-ge7E010/edit?usp=sharing)
+**LINK:** [Pitch Deck (Google Slides)](https://docs.google.com/presentation/d/14Uo2NjJu1JA7-NlhcA9yM1STi1OoK5PhIQ_-ge7E010/edit?usp=sharing)
 
+**FILE:** [Pitch Deck (PDF)](screenshots/SIMPEL%20-%20AI%20Benefits%20Navigator.pdf)
 The pitch deck consists of **7 slides**:
 
 1. **Welcome to SIMPEL** – project title, tagline, and four target programs.
