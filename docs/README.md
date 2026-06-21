@@ -6,34 +6,72 @@ This folder contains the **visual documentation** of the SIMPEL application for 
 
 ## 🖼️ Screenshots
 
-### 1. Question Screen
-![Question Screen](screenshots/1_questions.png)
-*The 7‑question intake form (Bahasa Indonesia). Users select answers via dropdowns and radio buttons — no typing required.*
+### 🌐 Live App (Streamlit)
 
-### 2. Results Screen (Expanded)
-![Results](screenshots/2_results.png)
+#### 1. Question Screen
+![Streamlit Questions](screenshots/1_questions_streamlit.png)
+*The 7‑question intake form in the live Streamlit app (Bahasa Indonesia). Users select answers via dropdowns and radio buttons — no typing required.*
+
+#### 2. Results Screen (Expanded)
+![Streamlit Results](screenshots/2_results_streamlit.png)
 *After clicking "Cek Bantuan", the app displays predicted programs with confidence scores, plain‑language reasons, required documents, and office locations. Cards can be expanded individually.*
 
-### 3. Disclaimer Banner
-![Disclaimer](screenshots/3_disclaimer.png)
+#### 3. Disclaimer Banner
+![Streamlit Disclaimer](screenshots/3_disclaimer_streamlit.png)
 *Persistent yellow warning at the bottom of every result: "Ini bukan keputusan resmi. Harap verifikasi ke kelurahan atau dinas sosial terdekat." This reinforces that the AI only suggests — it never decides.*
 
-### 4. Print Preview
-![Print](screenshots/4_print.png)
+#### 4. Print Preview
+![Streamlit Print](screenshots/4_print_streamlit.png)
 *The page is print‑friendly. Users can press Ctrl+P to get a physical checklist to bring to the village office. The disclaimer remains visible in print.*
 
 ---
 
-## 📁 Folder Contents
-```
-docs/
-├── README.md ← You are here
-└── screenshots/
-├── 1_questions.png
-├── 2_results.png
-├── 3_disclaimer.png
-└── 4_print.png
-```
+### 🎨 Figma Prototype
+
+#### 1. Question Screen (Mockup)
+![Figma Questions](screenshots/1_questions_figma.png)
+*Mobile‑first Figma mockup of the 7‑question form. Designed for clarity and accessibility on small screens.*
+
+#### 2. Results Screen (Mockup)
+![Figma Results](screenshots/2_results_figma.png)
+*Figma design of the results view, showing expandable cards, confidence meter, and document checklist.*
+
+#### 3. Disclaimer Banner (Mockup)
+![Figma Disclaimer](screenshots/3_disclaimer_figma.png)
+*The yellow disclaimer as designed — always visible, never dismissible.*
+
+#### 4. Print Layout (Mockup)
+![Figma Print](screenshots/4_print_figma.png)
+*Design of the print‑friendly output, ensuring the checklist and disclaimer remain intact on paper.*
+
+---
+
+## 🎯 Logo Documentation
+
+![SIMPEL Logo](screenshots/logo.png)
+
+**Logo file:** `docs/screenshots/logo.png`
+
+The SIMPEL logo combines a compass‑like mark with the project name. It is used in the app header, the README, and the pitch deck. The design emphasizes navigation, simplicity, and forward direction — reflecting the mission to guide families through a confusing benefits system.
+
+---
+
+## 📊 Pitch Deck Presentation
+
+**File:** [Pitch Deck (PDF)](../pitch-deck/simpel-pitch-deck.pdf) *(if added to repo)*  
+**Live link:** [View on Figma Slides]() *(optional)*
+
+The pitch deck consists of **7 slides**:
+
+1. **Welcome to SIMPEL** – project title, tagline, and four target programs.
+2. **The Information Accessibility Crisis** – 8 million families left out, root causes.
+3. **SIMPEL – Inclusive Social Navigation** – the 7‑question flow, kader‑friendly design.
+4. **Interpretable ML vs. Rigid Rules** – Random Forest architecture, balanced training data.
+5. **Responsible AI & Fairness Debugging** – false‑positive fix, confidence capping, privacy.
+6. **User‑Centered Design in Action** – storyboard of the user journey with screenshots.
+7. **Scale, Impact, and Future Roadmap** – voice input, offline PWA, DTKS integration, guardrailed chatbot.
+
+Each slide is designed in dark mode with Tech Green and Alert Yellow accents. The deck is used in the 3‑5 minute pitch video.
 
 ---
 
