@@ -18,6 +18,7 @@ This folder contains the **visual documentation** of the SIMPEL application for 
 
 #### 3. Disclaimer Banner
 ![Streamlit Disclaimer](screenshots/3_disclaimer_streamlit.png)
+
 *Persistent yellow warning at the bottom of every result: "Ini bukan keputusan resmi. Harap verifikasi ke kelurahan atau dinas sosial terdekat." This reinforces that the AI only suggests — it never decides.*
 
 #### 4. Print Preview
@@ -38,6 +39,7 @@ This folder contains the **visual documentation** of the SIMPEL application for 
 
 #### 3. Disclaimer Banner (Mockup)
 ![Figma Disclaimer](screenshots/3_disclaimer_figma.png)
+
 *The yellow disclaimer as designed — always visible, never dismissible.*
 
 #### 4. Print Layout (Mockup)
