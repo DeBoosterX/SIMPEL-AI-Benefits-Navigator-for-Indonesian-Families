@@ -58,8 +58,7 @@ The SIMPEL logo combines a compass‑like mark with the project name. It is used
 
 ## 📊 Pitch Deck Presentation
 
-**File:** [Pitch Deck (PDF)](../pitch-deck/simpel-pitch-deck.pdf) *(if added to repo)*  
-**Live link:** [View on Figma Slides]() *(optional)*
+**File:** [Pitch Deck (PDF)](../pitch-deck/simpel-pitch-deck.pdf)
 
 The pitch deck consists of **7 slides**:
 
