@@ -34,7 +34,7 @@ SIMPEL screens for four national social assistance programs:
 |---------|-----------|------------------|
 | **PKH** | Program Keluarga Harapan | Conditional cash transfers for families with pregnant women, school‑age children, elderly, or disabled members |
 | **BPNT** | Bantuan Pangan Non‑Tunai | Monthly food assistance (Rp200,000) for purchasing staple foods at designated e‑warong (government‑appointed local shops) |
-| **PIP** | Program Indonesia Pintar | Cash assistance for school‑age children (SD–SMA) from low‑income families to cover educational expenses |
+| **PIP** | Program Indonesia Pintar | Cash assistance for school‑age children (elementary to high school, SD–SMA) from low‑income families to cover educational expenses |
 | **PBI‑JKN** | Penerima Bantuan Iuran – Jaminan Kesehatan Nasional | Free health insurance with premiums paid by the government |
 
 ---
