@@ -1,4 +1,8 @@
-# 🧭 SIMPEL – AI Benefits Navigator for Indonesian Families
+<p align="center">
+  <img src="docs/logo-simpel.png" alt="SIMPEL Logo" width="200"/>
+</p>
+
+# SIMPEL – AI Benefits Navigator for Indonesian Families
 
 [![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)]([ISI_LINK_STREAMLIT])
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
