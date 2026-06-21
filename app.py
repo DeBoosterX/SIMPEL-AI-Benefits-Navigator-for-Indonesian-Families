@@ -1,9 +1,28 @@
 import streamlit as st
 import joblib
 import numpy as np
+from lang import strings
 
 # ---------- PAGE CONFIG ----------
 st.set_page_config(page_title="SIMPEL", page_icon="🧭", layout="centered")
+
+# ---------- LANGUAGE SETUP ----------
+if 'lang' not in st.session_state:
+    st.session_state.lang = 'id'
+
+# Tiny language selector – placed at the very top
+lang_col1, lang_col2 = st.columns([6, 1])
+with lang_col2:
+    lang = st.selectbox(
+        strings[st.session_state.lang]["lang_label"],
+        ["id", "en"],
+        format_func=lambda x: "Bahasa Indonesia" if x == "id" else "English",
+        key="lang_selector",
+        on_change=lambda: st.session_state.update(lang=st.session_state.lang_selector)
+    )
+    st.session_state.lang = lang
+
+t = strings[lang]
 
 # ---------- LOAD MODEL & ENCODER (cached) ----------
 @st.cache_resource
@@ -20,13 +39,13 @@ except Exception as e:
     model_loaded = False
 
 # ---------- HEADER ----------
-st.title("🧭 SIMPEL – Cek Bantuan Sosial yang Mungkin Anda Dapat")
+st.title(t["title"])
 st.caption("SIMPEL is a hackathon prototype. Not an official government tool. Built for USAII's Global AI Hackathon 2026.")
-st.markdown("Jawab 7 pertanyaan singkat di bawah ini. **Data Anda tidak disimpan.**")
-st.caption("ℹ️ Kriteria yang digunakan adalah penyederhanaan untuk simulasi. "
-           "Klik **sumber resmi** di setiap program untuk informasi lengkap.")
+st.markdown(t["subtitle"])
+st.caption(t["caption"])
 
 # ---------- PROGRAM DETAILS ----------
+# Program descriptions remain in Indonesian – they are official names/details.
 program_info = {
     "PKH": {
         "nama": "Program Keluarga Harapan (PKH)",
@@ -63,47 +82,55 @@ program_info = {
 }
 
 # ---------- QUESTIONNAIRE ----------
+# Underlying options always use the original Indonesian strings (for model compatibility).
+# The format_func translates the displayed labels.
+income_options = ["< Rp500.000", "Rp500.000 – Rp1.000.000", "Rp1.000.000 – Rp2.000.000", "> Rp2.000.000"]
+family_options = ["1", "2", "3", "4", "5 atau lebih"]
+wall_options = ["Tembok", "Semi permanen (setengah tembok)", "Papan/kayu", "Bambu/lainnya"]
+yes_no = ["Ya", "Tidak"]
+
 pendapatan = st.selectbox(
-    "1. Rata‑rata pendapatan keluarga per bulan?",
-    ["< Rp500.000", "Rp500.000 – Rp1.000.000", "Rp1.000.000 – Rp2.000.000", "> Rp2.000.000"]
+    t["q1"],
+    income_options,
+    format_func=lambda x, opts=income_options, lang_opts=t["income_options"]: lang_opts[opts.index(x)]
 )
-
 jumlah_anggota = st.selectbox(
-    "2. Jumlah anggota keluarga (termasuk Anda)?",
-    ["1", "2", "3", "4", "5 atau lebih"]
+    t["q2"],
+    family_options,
+    format_func=lambda x, opts=family_options, lang_opts=t["family_options"]: lang_opts[opts.index(x)]
 )
-
 anak_sekolah = st.radio(
-    "3. Apakah ada anak usia sekolah (7–18 tahun) di keluarga?",
-    ["Ya", "Tidak"]
+    t["q3"],
+    yes_no,
+    format_func=lambda x: t["yes"] if x == "Ya" else t["no"]
 )
-
 anak_balita = st.radio(
-    "4. Apakah ada anak balita (0–6 tahun) atau ibu hamil?",
-    ["Ya", "Tidak"]
+    t["q4"],
+    yes_no,
+    format_func=lambda x: t["yes"] if x == "Ya" else t["no"]
 )
-
 lansia = st.radio(
-    "5. Apakah ada anggota keluarga lanjut usia (≥60 tahun)?",
-    ["Ya", "Tidak"]
+    t["q5"],
+    yes_no,
+    format_func=lambda x: t["yes"] if x == "Ya" else t["no"]
 )
-
 disabilitas = st.radio(
-    "6. Apakah ada anggota keluarga dengan disabilitas berat?",
-    ["Ya", "Tidak"]
+    t["q6"],
+    yes_no,
+    format_func=lambda x: t["yes"] if x == "Ya" else t["no"]
 )
-
 dinding_rumah = st.selectbox(
-    "7. Jenis dinding terluas rumah Anda?",
-    ["Tembok", "Semi permanen (setengah tembok)", "Papan/kayu", "Bambu/lainnya"]
+    t["q7"],
+    wall_options,
+    format_func=lambda x, opts=wall_options, lang_opts=t["wall_options"]: lang_opts[opts.index(x)]
 )
 
 # ---------- BUTTON & AI PREDICTION ----------
-if st.button("🔍 Cek Bantuan yang Mungkin Saya Dapat", type="primary"):
+if st.button(t["btn"], type="primary"):
     if not model_loaded:
         st.error("Model AI tidak tersedia. Periksa kembali folder model/.")
     else:
-        # Map the text responses to numbers (they must match the training data)
+        # Map the text responses to numbers (must match training data – always use Indonesian strings)
         income_map = {
             "< Rp500.000": 0,
             "Rp500.000 – Rp1.000.000": 1,
@@ -135,58 +162,49 @@ if st.button("🔍 Cek Bantuan yang Mungkin Saya Dapat", type="primary"):
         # Collect programs with a probability of ≥ 0.5
         program_list = []
         confidences = {}
-        program_names = list(encoder.classes_)  # ['BPNT','PBI_JKN','PIP','PKH'] (alphabetical)
+        program_names = list(encoder.classes_)
 
         for i, prog in enumerate(program_names):
             if proba[i][0][1] >= 0.5:
                 program_list.append(prog)
-                # Limit the confidence level to 95% so it doesn’t seem too definitive
                 raw_conf = proba[i][0][1]
                 confidences[prog] = min(raw_conf, 0.95)
 
-        # Arrange the program so that it looks more natural: PKH, BPNT, PIP, PBI_JKN
+        # Arrange the programs in a natural order
         urutan = ["PKH", "BPNT", "PIP", "PBI_JKN"]
         program_list = [p for p in urutan if p in program_list]
 
         # ---------- SHOW RESULTS ----------
         st.markdown("---")
-        st.subheader("📋 Hasil Pemeriksaan")
+        st.subheader(t["result_title"])
 
         if not program_list:
-            st.warning(
-                "Berdasarkan data yang Anda masukkan, saat ini tidak terdeteksi program yang sesuai. "
-                "Namun, ini hanya simulasi. Silakan kunjungi kelurahan untuk informasi lebih lanjut."
-            )
+            st.warning(t["no_result"])
         else:
-            st.success(
-                f"Berdasarkan informasi Anda, Anda **mungkin** memenuhi syarat untuk "
-                f"{len(program_list)} program berikut."
-            )
+            st.success(t["success_msg"].format(len(program_list)))
 
             for prog in program_list:
                 info = program_info[prog]
                 conf = confidences[prog]
 
                 with st.expander(f"✅ {info['nama']} – Tingkat kecocokan: {conf:.0%}"):
-                    # Program-specific details
-                    st.markdown(f"**Mengapa?** {info['alasan']}")
-                    st.markdown(f"**Deskripsi:** {info['deskripsi']}")
-                    st.markdown("**Dokumen yang harus disiapkan:**")
+                    st.markdown(f"**{t['why']}** {info['alasan']}")
+                    st.markdown(f"**{t['desc']}:** {info['deskripsi']}")
+                    st.markdown(f"**{t['docs']}:**")
                     docs = info['dokumen'].split(', ')
                     for doc in docs:
                         st.markdown(f"- {doc}")
-                    st.markdown(f"**Ke mana harus pergi:** {info['tempat']}")
-                    st.markdown(f"**Sumber resmi:** {info['sumber']}")
-        
+                    st.markdown(f"**{t['place']}:** {info['tempat']}")
+                    st.markdown(f"**{t['source']}:** {info['sumber']}")
+
         st.markdown("---")
 
         # ---------- DISCLAIMER ----------
-        st.warning(
-            "⚠️ **Peringatan Penting:** Hasil ini **bukan keputusan resmi** dan hanya bersifat simulasi. "
-            "Kriteria sebenarnya bisa lebih kompleks dan dapat berubah sewaktu‑waktu. "
-            "**Harap verifikasi langsung ke kelurahan atau dinas sosial terdekat.** "
-            "Ini adalah alat bantu, bukan penentu akhir."
-        )
+        st.warning(t["disclaimer"])
 
         # ---------- PRINTING TIPS ----------
-        st.info("💡 Tips: Anda bisa mencetak halaman ini (Ctrl+P) untuk dibawa ke kelurahan sebagai panduan awal.")
+        st.info(t["print_tip"])
+
+        # ---------- RESET BUTTON ----------
+        if st.button(t["reset"]):
+            st.rerun()
