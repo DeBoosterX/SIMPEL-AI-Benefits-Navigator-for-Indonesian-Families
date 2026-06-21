@@ -10,15 +10,15 @@ This folder contains the **visual documentation** of the SIMPEL application for 
 
 #### 1. Question Screen
 ![Streamlit Questions](screenshots/1_questions_streamlit.png)
-*The 7‑question intake form in the live Streamlit app (Bahasa Indonesia). Users select answers via dropdowns and radio buttons — no typing required.*
+*The 7‑question intake form in the live Streamlit app (Bahasa Indonesia/English). Users select answers via dropdowns and radio buttons — no typing required.*
 
 #### 2. Results Screen (Expanded)
 ![Streamlit Results](screenshots/2_results_streamlit.png)
-*After clicking "Cek Bantuan", the app displays predicted programs with confidence scores, plain‑language reasons, required documents, and office locations. Cards can be expanded individually.*
+*After clicking "Check Benefits I may qualify for", the app displays predicted programs with confidence scores, plain‑language reasons, required documents, and office locations. Cards can be expanded individually.*
 
 #### 3. Disclaimer Banner
 ![Streamlit Disclaimer](screenshots/3_disclaimer_streamlit.png)
-*Persistent yellow warning at the bottom of every result: "Ini bukan keputusan resmi. Harap verifikasi ke kelurahan atau dinas sosial terdekat." This reinforces that the AI only suggests — it never decides.*
+*Persistent yellow warning at the bottom of every result: "This result is not an official decision and is only a simulation. Please verify directly at the village office or local social services." This reinforces that the AI only suggests — it never decides.*
 
 #### 4. Print Preview
 ![Streamlit Print](screenshots/4_print_streamlit.png)
